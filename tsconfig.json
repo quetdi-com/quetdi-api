@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "incremental": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": false,
+    "composite": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "useUnknownInCatchVariables": false
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.json",
+  ],
+  "exclude": [
+    "./dist",
+    "node_modules"
+  ]
+}

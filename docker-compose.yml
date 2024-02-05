@@ -1,0 +1,11 @@
+version: "0.0.1"
+
+services:
+  quetdi-api:
+    image: quetdi/api:0.0.1
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "7891:7891"
+    restart: unless-stopped

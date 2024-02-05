@@ -1,0 +1,1 @@
+{"version":3,"file":"logger-middleware.js","sourceRoot":"","sources":["../../../../../src/adapters/frameworks/express/logger/logger-middleware.ts"],"names":[],"mappings":";;;AAAA,qCAAsC;AACtC,qDAAyC;AAGlC,MAAM,gBAAgB,GAAG,CAAC,MAAc,EAAW,EAAE,CAAC,IAAA,wBAAM,EAAC,IAAA,mBAAU,EAAC,MAAM,CAAC,CAAC,CAAC;AAA3E,QAAA,gBAAgB,oBAA2D"}

@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.locator = exports.register = void 0;
+const locator_1 = require("./shared/locator");
+const supabase_1 = require("./adapters/frameworks/database/supabase");
+const app_setting_http_controller_1 = require("./adapters/frameworks/inbound/app-setting.http-controller");
+const app_setting_repository_1 = require("./domain/app-setting.repository");
+const app_setting_service_1 = require("./application/services/app-setting.service");
+const colors_mapper_1 = require("./adapters/frameworks/mappers/colors.mapper");
+const app_setting_route_1 = require("./adapters/frameworks/express/routes/app-setting.route");
+const auth_route_1 = require("./adapters/frameworks/express/routes/auth.route");
+const auth_http_controller_1 = require("./adapters/frameworks/inbound/auth.http-controller");
+const auth_validator_1 = require("./adapters/frameworks/express/validators/auth.validator");
+const app_validator_1 = require("./adapters/frameworks/express/validators/app.validator");
+const register = (config) => {
+    const locator = locator_1.ServiceLocator.instance;
+    locator.register(supabase_1.SupabaseDataSource, () => new supabase_1.SupabaseDataSource(config));
+    locator.register(auth_validator_1.AuthValidator, () => new auth_validator_1.AuthValidator());
+    locator.register(app_validator_1.AppValidator, () => new app_validator_1.AppValidator());
+    locator.register(colors_mapper_1.ColorsMapper, () => new colors_mapper_1.ColorsMapper());
+    locator.register(app_setting_repository_1.AppSettingRepository, () => new app_setting_repository_1.AppSettingRepository(locator.get(supabase_1.SupabaseDataSource), locator.get(colors_mapper_1.ColorsMapper)));
+    locator.register(app_setting_service_1.AppSettingService, () => new app_setting_service_1.AppSettingService(locator.get(app_setting_repository_1.AppSettingRepository), locator.get(colors_mapper_1.ColorsMapper)));
+    locator.register(app_setting_http_controller_1.AppSettingHttpController, () => new app_setting_http_controller_1.AppSettingHttpController(locator.get(app_setting_service_1.AppSettingService)));
+    locator.register(auth_http_controller_1.AuthHttpController, () => new auth_http_controller_1.AuthHttpController(locator.get(supabase_1.SupabaseDataSource)));
+    locator.register(app_setting_route_1.AppSettingRoute, () => new app_setting_route_1.AppSettingRoute(locator.get(app_setting_http_controller_1.AppSettingHttpController), locator.get(app_validator_1.AppValidator)));
+    locator.register(auth_route_1.AuthRoute, () => new auth_route_1.AuthRoute(locator.get(auth_http_controller_1.AuthHttpController), locator.get(auth_validator_1.AuthValidator)));
+};
+exports.register = register;
+exports.locator = locator_1.ServiceLocator.instance;
+//# sourceMappingURL=app.injector.js.map
