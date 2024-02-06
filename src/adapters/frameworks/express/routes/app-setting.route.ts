@@ -1,7 +1,6 @@
 import { IAppRoute } from './interfaces/route.interface';
 import { Router } from 'express';
 import { AppSettingHttpController } from '../../inbound/app-setting.http-controller';
-import { AuthHttpController } from '../../inbound/auth.http-controller';
 import { AppValidator } from '../validators/app.validator';
 
 export class AppSettingRoute implements IAppRoute{

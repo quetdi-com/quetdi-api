@@ -4,6 +4,7 @@ import { SupabaseDataSource } from '../../database/supabase';
 import { locator } from '../../../../app.injector';
 import { AppSettingRoute } from './app-setting.route';
 import { AuthRoute } from './auth.route';
+import { EventsRoute } from './events.route';
 
 export class ModuleRoute implements IModuleRoute {
   initialize(app: Express): void {
@@ -22,6 +23,7 @@ export class ModuleRoute implements IModuleRoute {
 
   load(router: Router): void {
     router.use('/app', locator.get(AppSettingRoute).load());
+    router.use('/events', locator.get(EventsRoute).load());
     router.use('/auth', locator.get(AuthRoute).load());
   }
 }
