@@ -1,4 +1,4 @@
-import { Mapper } from '../../../shared/interfaces/mapper.interface';
+import { Mapper } from '../../../shared/interfaces';
 import { AppColors } from '../../../domain/aggregates/colors.agg';
 import { AppColorsResponseDto } from '../../dtos/response/app-colors.response';
 import { AppColorsModel } from '../../../domain/model/app-colors.model';
