@@ -12,6 +12,15 @@ class EventsHttpController {
                 next(e);
             }
         };
+        this.addEvents = async (req, res, next) => {
+            try {
+                const meEvents = await this.eventUseCase.addEvents(req.body);
+                res.json(meEvents);
+            }
+            catch (e) {
+                next(e);
+            }
+        };
         this.eventUseCase = eventUseCase;
     }
 }

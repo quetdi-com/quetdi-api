@@ -54,4 +54,30 @@ export class EventMapper implements Mapper<Event, EventModel, EventResponseDto> 
       userId: entity.userId
     };
   }
+
+  toRequest(entity: Event): EventModel {
+    return {
+      btn_add_to_calendar: entity.btnAddToCalendar,
+      btn_confirm: entity.btnConfirm,
+      btn_share_link: entity.btnShareLink,
+      event_date: entity.eventDate,
+      event_description: entity.eventDescription,
+      event_location_name: entity.eventLocationName,
+      event_location_url: entity.eventLocationUrl,
+      event_time: entity.eventTime,
+      event_title: entity.eventTitle,
+      org_mail: entity.orgMail,
+      org_name: entity.orgName,
+      org_phone: entity.orgPhone,
+      org_website: entity.orgWebsite,
+      primary_color: entity.primaryColor,
+      qr_code_id: entity.qrCodeId,
+      reminder_time: entity.reminderTime,
+      secondary_color: entity.secondaryColor,
+      text_add_to_calendar: entity.textAddToCalendar,
+      text_confirm: entity.textConfirm,
+      text_share_link: entity.textShareLink,
+      user_id: entity.userId
+    };
+  }
 }

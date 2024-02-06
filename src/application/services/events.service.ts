@@ -1,7 +1,8 @@
 import { EventsUsecase } from '../usecases/events.usecase';
 import { EventsRepository } from '../../domain/events.repository';
 import { EventMapper } from '../../adapters/frameworks/mappers/event.mapper';
-import { EventsResponseDto } from '../../adapters/dtos/response/events.response';
+import { EventResponseDto, EventsResponseDto } from '../../adapters/dtos/response/events.response';
+import { Event } from '../../domain/aggregates/event.agg';
 
 export class EventsService implements EventsUsecase {
   private readonly repository: EventsRepository;
@@ -15,6 +16,12 @@ export class EventsService implements EventsUsecase {
     this.eventMapper = eventMapper;
   }
 
+  async addEvents(event: Event): Promise<EventResponseDto> {
+    const result = await this.repository.addEvents(event);
+
+    return this.eventMapper.toResponse(result[0])
+  }
+
   async fetchMyEvents(): Promise<EventsResponseDto> {
     const result = await this.repository.fetchMyEvents();
     return {
@@ -22,7 +29,7 @@ export class EventsService implements EventsUsecase {
       paging: {
         limit: 0,
         offset: 0,
-        total: 0,
+        total: result.length,
       },
     }
   }

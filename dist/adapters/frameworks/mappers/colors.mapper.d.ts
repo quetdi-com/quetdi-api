@@ -5,4 +5,5 @@ import { AppColorsModel } from '../../../domain/model/app-colors.model';
 export declare class ColorsMapper implements Mapper<AppColors, AppColorsModel, AppColorsResponseDto> {
     toDomain(record: AppColorsModel): AppColors;
     toResponse(entity: AppColors): AppColorsResponseDto;
+    toRequest(entity: AppColors): AppColorsModel;
 }

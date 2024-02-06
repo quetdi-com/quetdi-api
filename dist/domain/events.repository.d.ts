@@ -6,4 +6,5 @@ export declare class EventsRepository {
     private readonly eventMapper;
     constructor(supabase: SupabaseDataSource, colorsMapper: EventMapper);
     fetchMyEvents(): Promise<Event[]>;
+    addEvents(event: Event): Promise<Event[]>;
 }
