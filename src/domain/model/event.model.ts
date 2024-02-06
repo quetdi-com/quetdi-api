@@ -20,4 +20,5 @@ interface EventModel {
   text_add_to_calendar: string;
   text_confirm: string;
   text_share_link: string;
+  event_cover_url: string;
 }

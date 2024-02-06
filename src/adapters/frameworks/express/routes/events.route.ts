@@ -1,6 +1,7 @@
 import { IAppRoute } from './interfaces/route.interface';
 import { Router } from 'express';
 import { EventsHttpController } from '../../inbound/events.http-controller';
+import multer from 'multer';
 
 export class EventsRoute implements IAppRoute {
   private readonly controller: EventsHttpController;
@@ -12,6 +13,13 @@ export class EventsRoute implements IAppRoute {
   }
 
   load(): Router {
+    const upload = multer({
+      storage: multer.memoryStorage(),
+      limits: {
+        fileSize: 8 * 1024 * 1024, // 2 MB
+        files: 1,
+      },
+    });
     const router = Router();
 
     router.get('/me',
@@ -20,6 +28,11 @@ export class EventsRoute implements IAppRoute {
     router.post('/add',
       this.controller.addEvents
     );
+    router.post('/uploadCoverImage',
+      upload.single('image'),
+      this.controller.uploadCoverImage
+    );
+
     return router;
   }
 }
