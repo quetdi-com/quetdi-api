@@ -5,6 +5,7 @@ import { Event } from '../../../domain/aggregates/event.agg';
 export class EventMapper implements Mapper<Event, EventModel, EventResponseDto> {
   toDomain(record: EventModel): Event {
     return {
+      coverUrl: record.event_cover_url,
       primaryColor: record.primary_color,
       qrCodeId: record.qr_code_id,
       reminderTime: record.reminder_time,
@@ -31,6 +32,7 @@ export class EventMapper implements Mapper<Event, EventModel, EventResponseDto> 
 
   toResponse(entity: Event): EventResponseDto {
     return {
+      coverUrl: entity.coverUrl,
       btnAddToCalendar: entity.btnAddToCalendar,
       btnConfirm: entity.btnConfirm,
       btnShareLink: entity.btnShareLink,
@@ -57,6 +59,7 @@ export class EventMapper implements Mapper<Event, EventModel, EventResponseDto> 
 
   toRequest(entity: Event): EventModel {
     return {
+      event_cover_url: entity.coverUrl,
       btn_add_to_calendar: entity.btnAddToCalendar,
       btn_confirm: entity.btnConfirm,
       btn_share_link: entity.btnShareLink,

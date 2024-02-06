@@ -22,6 +22,7 @@ export interface EventResponseDto {
   textAddToCalendar: string;
   textConfirm: string;
   textShareLink: string;
+  coverUrl: string;
 }
 
 export interface EventsResponseDto {

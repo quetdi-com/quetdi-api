@@ -21,6 +21,16 @@ class EventsHttpController {
                 next(e);
             }
         };
+        this.uploadCoverImage = async (req, res, next) => {
+            const file = req.file;
+            try {
+                const path = await this.eventUseCase.uploadCoverImage(req.file);
+                res.json({ path });
+            }
+            catch (e) {
+                next(e);
+            }
+        };
         this.eventUseCase = eventUseCase;
     }
 }

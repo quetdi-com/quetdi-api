@@ -20,4 +20,5 @@ export interface Event {
   textAddToCalendar: string;
   textConfirm: string;
   textShareLink: string;
+  coverUrl: string;
 }

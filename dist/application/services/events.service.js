@@ -10,6 +10,9 @@ class EventsService {
         const result = await this.repository.addEvents(event);
         return this.eventMapper.toResponse(result[0]);
     }
+    async uploadCoverImage(file) {
+        return await this.repository.uploadCoverImage(file);
+    }
     async fetchMyEvents() {
         const result = await this.repository.fetchMyEvents();
         return {

@@ -4,6 +4,7 @@ exports.EventMapper = void 0;
 class EventMapper {
     toDomain(record) {
         return {
+            coverUrl: record.event_cover_url,
             primaryColor: record.primary_color,
             qrCodeId: record.qr_code_id,
             reminderTime: record.reminder_time,
@@ -29,6 +30,7 @@ class EventMapper {
     }
     toResponse(entity) {
         return {
+            coverUrl: entity.coverUrl,
             btnAddToCalendar: entity.btnAddToCalendar,
             btnConfirm: entity.btnConfirm,
             btnShareLink: entity.btnShareLink,
@@ -54,6 +56,7 @@ class EventMapper {
     }
     toRequest(entity) {
         return {
+            event_cover_url: entity.coverUrl,
             btn_add_to_calendar: entity.btnAddToCalendar,
             btn_confirm: entity.btnConfirm,
             btn_share_link: entity.btnShareLink,

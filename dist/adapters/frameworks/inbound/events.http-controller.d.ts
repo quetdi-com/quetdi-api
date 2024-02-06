@@ -4,4 +4,5 @@ export declare class EventsHttpController {
     constructor(eventUseCase: EventsUsecase);
     fetchMyEvents: (req: any, res: any, next: any) => Promise<void>;
     addEvents: (req: any, res: any, next: any) => Promise<void>;
+    uploadCoverImage: (req: any, res: any, next: any) => Promise<void>;
 }
