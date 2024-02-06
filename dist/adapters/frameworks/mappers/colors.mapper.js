@@ -16,6 +16,9 @@ class ColorsMapper {
             secondary: entity.secondary,
         };
     }
+    toRequest(entity) {
+        return undefined;
+    }
 }
 exports.ColorsMapper = ColorsMapper;
 //# sourceMappingURL=colors.mapper.js.map

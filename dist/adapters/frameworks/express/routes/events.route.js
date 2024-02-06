@@ -9,6 +9,7 @@ class EventsRoute {
     load() {
         const router = (0, express_1.Router)();
         router.get('/me', this.controller.fetchMyEvents);
+        router.post('/add', this.controller.addEvents);
         return router;
     }
 }

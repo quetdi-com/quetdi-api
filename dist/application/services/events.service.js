@@ -6,6 +6,10 @@ class EventsService {
         this.repository = repository;
         this.eventMapper = eventMapper;
     }
+    async addEvents(event) {
+        const result = await this.repository.addEvents(event);
+        return this.eventMapper.toResponse(result[0]);
+    }
     async fetchMyEvents() {
         const result = await this.repository.fetchMyEvents();
         return {

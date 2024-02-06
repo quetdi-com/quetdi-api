@@ -19,4 +19,8 @@ export class ColorsMapper implements Mapper<AppColors, AppColorsModel, AppColors
       secondary: entity.secondary,
     };
   }
+
+  toRequest(entity: AppColors): AppColorsModel {
+    return undefined;
+  }
 }

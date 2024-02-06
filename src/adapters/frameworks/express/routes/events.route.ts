@@ -17,6 +17,9 @@ export class EventsRoute implements IAppRoute {
     router.get('/me',
       this.controller.fetchMyEvents
     );
+    router.post('/add',
+      this.controller.addEvents
+    );
     return router;
   }
 }

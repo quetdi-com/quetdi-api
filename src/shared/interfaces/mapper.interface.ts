@@ -8,6 +8,8 @@ export interface Mapper<
     toDomain(record: Model): DomainEntity;
 
     toResponse(entity: DomainEntity): Response;
+
+    toRequest(entity: DomainEntity): Model;
 }
 
 export interface IPaginationMapper {
