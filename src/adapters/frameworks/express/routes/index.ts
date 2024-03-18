@@ -17,15 +17,14 @@ export class ModuleRoute implements IModuleRoute {
         app.use('/v1', router);
 
 
-        app.get('/bankQrCode', (_req: Request, res: Response) => {
-            let {price} = _req.query;
+        app.get('/dynamic-qr', (_req, res) => {
+            let { price } = _req.query;
+            let { txt } = _req.query;
             let priceLength = price.length;
+            //00020101021138540010A00000072701240006970407011096020919960208QRIBFTTA53037045802VN830084005402126304C2CB
             let priceCode = '54' + this.formatStringLength(price.toString()) + price.toString();
-            let text = '00020101021238540010A00000072701240006970407011096020919960208QRIBFTTA5303704' +
-                priceCode +
-                '5802VN830084006304';
-
-            res.json(text+this.calculateCRC(text).toString(16));
+            let text = txt.toString().slice(0, -8) + priceCode + '6304'
+            res.json(text + this.calculateCRC(text).toString(16));
         });
 
         app.get('/health', (_req: Request, res: Response) => {
